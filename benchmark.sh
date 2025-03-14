@@ -1,14 +1,14 @@
 #!/bin/bash
 
-set -e  # Dừng script nếu có lỗi
+set -e  # Stop script if any command fails
 
-# Tạo file log benchmark
+# Create benchmark log file
 
 BENCHMARK_LOG="duckdb_output.log"
 RESULTS_FILE="runtime_results.txt"
 OUTPUT_IMAGE="runtime_plot.png"
 
-echo "\n###Chạy benchmark TPC-H và lưu kết quả vào $BENCHMARK_LOG..."
+echo "\n### Running TPC-H benchmark and saving results to $BENCHMARK_LOG..."
 {
   echo ".timer on"
   for i in {1..22}; do
@@ -16,6 +16,6 @@ echo "\n###Chạy benchmark TPC-H và lưu kết quả vào $BENCHMARK_LOG..."
   done
 } | duckdb tpch.duckdb | tee "$BENCHMARK_LOG"
 
-# Lọc thời gian thực thi từ log
-echo "Lọc thời gian thực thi từ $BENCHMARK_LOG vào $RESULTS_FILE..."
+# Extract execution time from log
+echo "Extracting execution time from $BENCHMARK_LOG into $RESULTS_FILE..."
 grep "Run Time (s):" "$BENCHMARK_LOG" > "$RESULTS_FILE"
