@@ -8,7 +8,7 @@ BENCHMARK_LOG="duckdb_output.log"
 RESULTS_FILE="runtime_results.txt"
 OUTPUT_IMAGE="runtime_plot.png"
 
-echo "\n### Running TPC-H benchmark and saving results to $BENCHMARK_LOG..."
+echo "### Running TPC-H benchmark and saving results to $BENCHMARK_LOG..."
 {
   echo ".timer on"
   for i in {1..22}; do
